@@ -1,12 +1,19 @@
----
-apiVersion: v1
-kind: pod 
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: Node-pod 
-  label: 
-    author: Sunloid 
-spec: 
-  - name: NodeJS 
-    image: sunloid04/nodeapp:latest
-    ports: 
-      - containerPort: 3000
+  name: nodejs-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      containers:
+      - name: nodejs-container
+        image: sunloid04/nodebetter:latest  # Replace with your Docker image
+        ports:
+        - containerPort: 3000
