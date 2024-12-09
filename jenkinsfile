@@ -1,0 +1,33 @@
+// Visit the GroovySyntax.md for the explanation of this pipeline
+pipeline {
+    agent any
+    tools {
+	    jdk "OracleJDK8"
+	}
+    stages{
+        stage('Fetch code') {
+          steps{
+                git branch: 'main', url:'https://github.com/Sunloid/cicd-source'
+          }  
+        }
+   
+        stage("Build image and push to dockerhub"){
+            steps{
+                script{
+                     sh """
+                        docker build -t sunloid04/node:${BUILD_NUMBER} .                     
+                        docker tag  sunloid04/node:latest 
+                        docker push sunloid04/node:latest
+                    """
+                }
+            }
+        }
+
+        stage("Deploy to Kubernetes"){
+            steps{
+                
+            }
+        }
+
+    }
+}
