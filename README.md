@@ -5,7 +5,7 @@ This repository demonstrates a CI/CD pipeline for a Node.js application utilizin
 
 ## Project structure 
 ```
-ci-cd-nodejs-kubernetes/
+CICD-Node-docker-k8s/
 ├── Dockerfile                  # Dockerfile for Node.js application
 ├── Jenkinsfile                 # Jenkins pipeline script
 ├── Kubernetes/                 # Directory for Kubernetes manifests
@@ -16,3 +16,5 @@ ci-cd-nodejs-kubernetes/
 │   ├── jenkins-setup.sh        # Script to install jenkins in the instance 
 │   ├── k8s-setup.sh            # Script to install kubernetes and setup kubernetes cluster in the instance 
 ```
+
+## Explaining the Approach 
