@@ -6,14 +6,16 @@ This repository demonstrates a CI/CD pipeline for a Node.js application utilizin
 ## Project structure 
 ```
 CICD-Node-docker-k8s/
-├── Dockerfile                  # Dockerfile for Node.js application
 ├── Jenkinsfile                 # Jenkins pipeline script
-├── deployment.yaml             # Kubernetes deployment configuration
-├── service.yaml                # Kubernetes service configuration
-├── app.js                      # Contains the basic config for nodejs  
-├── package.json                # Contains the dependencies required
 ├── README.md                   # Detailed documentation for the project
 ├── resources                   # Containing the images used in this file     
+├── NodeJS                      # Contains files for the NodeJS application
+    ├── package.json            # Contains the dependencies required
+    ├── app.js                  # Contains the basic config for nodejs  
+    └── Dockerfile              # Dockerfile for Node.js application
+├── Kubernetes                  # Kubernetes Docs                 
+    ├── deployment.yaml         # Kubernetes deployment configuration
+    ├── service.yaml            # Kubernetes service configuration
  
 ```
 
