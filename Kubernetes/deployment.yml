@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: nodejs-container
-        image: sunloid04/nodebetter:latest  # Replace with your Docker image
+        image: sunloid04/nodeapp:latest  # Replace with your Docker image
         ports:
         - containerPort: 3000
