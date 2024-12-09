@@ -20,8 +20,7 @@ CICD-Node-docker-k8s/
 Making a CI/CD pipeline which uses Jenkins for CI and Kubernetes for CD the entire pipeline is on a single EC2 instance of type t2.xlarge. When a pull request is made for the code in the GitHub then the jenkins job is automatically triggered via the webhook.
 The jenkins intiates the build and which then uses the dockerfile in this repository and create the image. The image is then tagged and pushed into the dockerhub. 
 The same image is deployed into Kubernetes cluster which has to be manually setup first in the instance itself.
-
-Here is the setup of the entire pipeline Step by step. This CI/CD 
+Here is the setup of the entire pipeline Step by step. 
 
 ## AWS 
 Create an instance of the type t2.xlarge. That instance is being used because of its large amount of memory.  Allow all traffic for now and use Ubuntu 22.04 as the ami. 
@@ -91,6 +90,7 @@ As I said before GitHub acts as the Version control system for this project. It 
 - Next go to GitHub repository > settings > add webhook and give it jenkins url and content type of application/json. 
 
 - For trigger events select Pull requests and save the webhook 
+![Alt text](<./resources/image (40).png>)
 
 - Go to jenkins and click configure on the build and then select GitHub hook trigger for GITScm polling under Build Triggers 
 
