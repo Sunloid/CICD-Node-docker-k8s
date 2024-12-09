@@ -8,20 +8,24 @@ This repository demonstrates a CI/CD pipeline for a Node.js application utilizin
 CICD-Node-docker-k8s/
 ├── Dockerfile                  # Dockerfile for Node.js application
 ├── Jenkinsfile                 # Jenkins pipeline script
-├── Kubernetes/                 # Directory for Kubernetes manifests
-│   ├── deployment.yaml         # Kubernetes deployment configuration
-│   ├── service.yaml            # Kubernetes service configuration
+├── deployment.yaml             # Kubernetes deployment configuration
+├── service.yaml                # Kubernetes service configuration
+├── app.js                      # Contains the basic config for nodejs  
+├── package.json                # Contains the dependencies required
 ├── README.md                   # Detailed documentation for the project
-├── scripts/                    # Optional scripts for setup or maintenance
-│   ├── jenkins-setup.sh        # Script to install jenkins in the instance 
-│   ├── k8s-setup.sh            # Script to install kubernetes and setup kubernetes cluster in the instance 
+ 
 ```
 
-## Explaining the Approach 
+# Explaining the Approach 
+Making a CI/CD pipeline which uses Jenkins for CI and Kubernetes for CD the entire pipeline is on a single EC2 instance of type t2.xlarge. The code is commited and pushed into the GitHub which is the Version control system of the pipeline and then the jenkins job is automatically triggered via the webhook.
+The jenkins intiates the build and which then uses the dockerfile in this repository and create the image. The image is then tagged and pushed into the dockerhub. 
+The same image is deployed into Kubernetes cluster which has to be manually setup first in the instance itself.  Here is the setup of the entire pipeline Step by step. This CI/CD 
 
+## AWS 
+Create an instance of the type t2.xlarge. That instance is being used because of its large amount of memory.  
 
-## Jenkins 
-sh 
+## Jenkins
+In the instance run this commands and install jenkins and then go to Jenkins on port 8080 and install the suggested plugins  
 ```
 #!/bin/bash
 sudo apt update -y
@@ -39,6 +43,8 @@ sudo apt-get install jenkins -y
 ```
 
 ## Kubernetes
+In the instance terminal use these commands and install and setup the Kubernetes cluster. 
+
 ```
 sudo apt update -y 
 sudo apt install docker.io -y 
