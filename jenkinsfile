@@ -9,7 +9,7 @@ pipeline {
     stages{
         stage('Fetch code') {
           steps{
-                git credentialsId: 'gitCred', branch: 'main', url:'https://github.com/Sunloid/cicd-source'
+                git credentialsId: 'gitCred', branch: 'main', url:'https://github.com/Sunloid/CICD-Node-docker-k8s'
           }  
         }
    
