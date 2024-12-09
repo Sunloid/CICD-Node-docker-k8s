@@ -88,6 +88,7 @@ As I said before GitHub acts as the Version control system for this project. It 
 - First install the necessary plugins in the Jenkins manage page. 
 
 - Next go to GitHub repository > settings > add webhook and give it jenkins url and content type of application/json. 
+![Alt text](<./resources/image (41).png>)
 
 - For trigger events select Pull requests and save the webhook 
 ![Alt text](<./resources/image (40).png>)
@@ -97,3 +98,8 @@ As I said before GitHub acts as the Version control system for this project. It 
 - Then the use of properties in the jenkinsfile comes. I have already added this in the jenkins file 
 
 - Now all the Pull requests to this repository will trigger the build in the jenkins. 
+
+## Proofs of the working of the project 
+![Alt text](<./resources/image (42).png>)
+
+![Alt text](<./resources//image (43).png>)
