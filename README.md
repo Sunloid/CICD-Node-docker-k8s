@@ -22,7 +22,7 @@ The jenkins intiates the build and which then uses the dockerfile in this reposi
 The same image is deployed into Kubernetes cluster which has to be manually setup first in the instance itself.  Here is the setup of the entire pipeline Step by step. This CI/CD 
 
 ## AWS 
-Create an instance of the type t2.xlarge. That instance is being used because of its large amount of memory.  
+Create an instance of the type t2.xlarge. That instance is being used because of its large amount of memory.  Allow all traffic for now and use Ubuntu 22.04 as the ami. 
 
 ## Jenkins
 In the instance run this commands and install jenkins and then go to Jenkins on port 8080 and install the suggested plugins  
@@ -41,6 +41,10 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 sudo apt-get update -y
 sudo apt-get install jenkins -y
 ```
+
+In the jenkins go to manage jenkins and then tools. In the tools configure JDK and git with the names of OracleJDK8 and GIT specify their directory from the same instance 
+
+In the manage Jenkins page go the credentials and add the credentials for Docker, GitHub and Kubernetes. For Kubernetes use secret file and use the apiconfig from the kubernetes cluster. Do this step after the Kubernetes setup is done. 
 
 ## Kubernetes
 In the instance terminal use these commands and install and setup the Kubernetes cluster. 
