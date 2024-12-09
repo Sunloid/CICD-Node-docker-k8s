@@ -13,13 +13,14 @@ CICD-Node-docker-k8s/
 ├── app.js                      # Contains the basic config for nodejs  
 ├── package.json                # Contains the dependencies required
 ├── README.md                   # Detailed documentation for the project
+├── resources                   # Containing the images used in this file     
  
 ```
 
 # Explaining the Approach 
 Making a CI/CD pipeline which uses Jenkins for CI and Kubernetes for CD the entire pipeline is on a single EC2 instance of type t2.xlarge. When a pull request is made for the code in the GitHub then the jenkins job is automatically triggered via the webhook.
 The jenkins intiates the build and which then uses the dockerfile in this repository and create the image. The image is then tagged and pushed into the dockerhub. 
-The same image is deployed into Kubernetes cluster which has to be manually setup first in the instance itself.
+The same image is deployed into Kubernetes cluster which has to be manually setup first in the instance itself. Upon completion of the build jenkins sends an email which is then gives 
 Here is the setup of the entire pipeline Step by step. 
 
 ## AWS 
@@ -98,6 +99,23 @@ As I said before GitHub acts as the Version control system for this project. It 
 - Then the use of properties in the jenkinsfile comes. I have already added this in the jenkins file 
 
 - Now all the Pull requests to this repository will trigger the build in the jenkins. 
+
+## Post Build Notification
+- First install Email extension plugin 
+- GO to manage jenkins and then configure system in the extended email section setup the SMTP server and default sender email address 
+- add the following in the jenkinsfile 
+```
+post {
+    always {
+        slackSend (
+            channel: '#your-channel',
+            message: "Job: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+            color: (currentBuild.currentResult == 'SUCCESS') ? 'good' : 'danger'
+        )
+    }
+}
+
+```
 
 ## Proofs of the working of the project 
 ![Alt text](<./resources/image (42).png>)
