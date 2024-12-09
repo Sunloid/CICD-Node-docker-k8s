@@ -42,10 +42,11 @@ sudo apt-get update -y
 sudo apt-get install jenkins -y
 ```
 
-In the jenkins go to manage jenkins and then tools. In the tools configure JDK and git with the names of OracleJDK8 and GIT specify their directory from the same instance 
+- In the jenkins go to manage jenkins and then tools. In the tools configure JDK and git with the names of OracleJDK8 and GIT specify their directory from the same instance 
 
-In the manage Jenkins page go the credentials and add the credentials for Docker, GitHub and Kubernetes. For Kubernetes use secret file and use the apiconfig from the kubernetes cluster. Do this step after the Kubernetes setup is done. 
+- In the manage Jenkins page go the credentials and add the credentials for Docker, GitHub and Kubernetes. For Kubernetes use secret file and use the apiconfig from the kubernetes cluster. Do this step after the Kubernetes setup is done. 
 
+- Now go to new project and make a pipeline project and copy paste the Jenkinsfile from this repository. 
 ## Kubernetes
 In the instance terminal use these commands and install and setup the Kubernetes cluster. 
 
