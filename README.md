@@ -85,4 +85,15 @@ sudo apt-get install jenkins -y
 
 ## GitHub 
 As I said before GitHub acts as the Version control system for this project. It contains the entire code needed and it also triggers the build as soon as the pull request is made this is how its done: 
-- 
+
+- First install the necessary plugins in the Jenkins manage page. 
+
+- Next go to GitHub repository > settings > add webhook and give it jenkins url and content type of application/json. 
+
+- For trigger events select Pull requests and save the webhook 
+
+- Go to jenkins and click configure on the build and then select GitHub hook trigger for GITScm polling under Build Triggers 
+
+- Then the use of properties in the jenkinsfile comes. I have already added this in the jenkins file 
+
+- Now all the Pull requests to this repository will trigger the build in the jenkins. 

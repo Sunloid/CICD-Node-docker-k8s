@@ -1,4 +1,9 @@
-// Visit the GroovySyntax.md for the explanation of this pipeline
+properties([
+    pipelineTriggers([
+        githubPush() // or pollSCM('* * * * *') for periodic polling
+    ])
+])
+
 pipeline {
     agent any
     tools {
